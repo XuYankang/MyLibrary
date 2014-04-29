@@ -12,9 +12,10 @@ public class LCS {
     public static int calculateTimes = 0;
 
     public static void main(String[] args) {
-        String b = "仅售238元，市场价418元的瑞康体检基础A套组，不限男女，具体项目详见体检项目列表！请带上本人身份证前往！体检时间8:00-10:00！关爱中老年人！送父母、长辈、好友、自己的首选！瑞康体检，方便、快捷、优惠、优质！";
-        String a = "仅售510元，市场价908元的瑞康女性专用体检套组，仅限女士使用，具体项目详见体检项目列表！请带上本人身份证前往！体检时间8:00-10:00！关爱中老年人！送父母、长辈、好友、自己的首选！瑞康体检，方便、快捷、优惠、优质！";
-        System.out.println(similarity(a, b));
+        String b = "龙福商务酒店";
+        String a = "龙源商务酒店";
+        System.out.println(similarity1(a, b));
+        System.out.println(nullableEquals1("", ""));
     }
 
     public static int levenshteinDistance(String s, String t) {
@@ -24,6 +25,22 @@ public class LCS {
         Print.print(matrix);
 
         return matrix[s.length()][t.length()];
+    }
+
+    private static boolean nullableEquals1(String shopName, String shopName1) {
+        if (shopName.equals("") && shopName1.equals("")) {
+            return false;
+        }
+        return nullableEquals(shopName, shopName1);
+    }
+
+    private static boolean nullableEquals(Object x, Object y) {
+        if (x == null && y == null)
+            return true;
+        else if (x == null || y == null)
+            return false;
+        else
+            return x.equals(y);
     }
 
     private static void levenshteinDistance(int[][] matrix, String s, int slength, String t, int tlength) {
@@ -78,6 +95,15 @@ public class LCS {
             return 0;
         int common = lcs(a, b);
         return common * 2.0 / (a.length() + b.length());
+    }
+
+    private static double similarity1(String a, String b) {
+        if (a == null && b == null)
+            return 1;
+        if (a.isEmpty() && b.isEmpty()) {
+            return 1;
+        }
+        return similarity(a, b);
     }
 
     public static int lcs(String a, String b) {
