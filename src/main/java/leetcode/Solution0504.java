@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -26,6 +28,8 @@ public class Solution0504 {
         //System.out.println(solution.maxPoints(points));
         System.out.println(solution.simplifyPath("/..."));
     }
+
+
 
     /**
      * http://oj.leetcode.com/problems/simplify-path/
