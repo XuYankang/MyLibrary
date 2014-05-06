@@ -31,14 +31,14 @@ public class Solution0505 {
 //        five.right = null;
 //        System.out.println(solution.hasPathSum(five, 22));
         ListNode one = new ListNode(1);
-       // ListNode two = new ListNode(2);
+        // ListNode two = new ListNode(2);
         //ListNode three = new ListNode(3);
         //ListNode four = new ListNode(4);
         //one.next = two;
         //two.next = three;
         //three.next=four;
         TreeNode node = solution.sortedListToBST(one);
-        System.out.println(node);
+        System.out.println(solution.generate(5));
 
     }
 
@@ -155,7 +155,7 @@ public class Solution0505 {
         ListNode stepOne = head;
         //stepOne.next = head.next;
         ListNode stepTwo = head;
-       // stepTwo.next = head.next;
+        // stepTwo.next = head.next;
         while (stepTwo.next != tail) {
             stepTwo = stepTwo.next;
             if (stepTwo.next != tail) {
@@ -168,6 +168,50 @@ public class Solution0505 {
         return stepOne;
     }
 
+    /**
+     * Given numRows, generate the first numRows of Pascal's triangle.
+     * <p/>
+     * For example, given numRows = 5,
+     * Return
+     * <p/>
+     * [
+     * [1],
+     * [1,1],
+     * [1,2,1],
+     * [1,3,3,1],
+     * [1,4,6,4,1]
+     * ]
+     *
+     * @param numRows
+     * @return
+     */
+    public ArrayList<ArrayList<Integer>> generate(int numRows) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        if (numRows < 1) {
+            return result;
+        }
+        if (numRows >= 1) {
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            list.add(1);
+            result.add(list);
+        }
+        if (numRows >= 2) {
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            list.add(1);
+            list.add(1);
+            result.add(list);
+        }
+        for (int i = 2; i < numRows; i++) {
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            list.add(1);
+            for (int j = 1; j <= i - 1; j++) {
+                list.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+            }
+            list.add(1);
+            result.add(list);
+        }
+        return result;
+    }
 
 }
 

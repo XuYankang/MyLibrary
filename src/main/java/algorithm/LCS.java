@@ -12,8 +12,8 @@ public class LCS {
     public static int calculateTimes = 0;
 
     public static void main(String[] args) {
-        String b = "龙福商务酒店";
-        String a = "龙源商务酒店";
+        String b = "电影票1张，可观看2D";
+        String a = "电影票1张，可观看2D/3D";
         System.out.println(similarity1(a, b));
         System.out.println(nullableEquals1("", ""));
     }
