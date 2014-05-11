@@ -11,15 +11,41 @@ import java.util.Stack;
 public class Tool {
 
     public static void main(String[] args) {
-        stringToTree("1,2,3,#,#,4,#,#,5");
+        System.out.println(Tool.printLinkNode(stringToLinkNode("1,2,3,5")));
     }
 
-    public static void printTree(TreeNode t){
-        if(t==null){
+    public static void printTree(TreeNode t) {
+        if (t == null) {
             System.out.println("Empty Tree");
         }
     }
 
+    public static ListNode stringToLinkNode(String s) {
+        if (s.length() == 0) {
+            return null;
+        }
+        String[] ss = s.split(",");
+        ListNode root = new ListNode(0);
+        ListNode cur = root;
+        for (String temp : ss) {
+            ListNode ln = new ListNode(Integer.valueOf(temp));
+            cur.next = ln;
+            cur = cur.next;
+        }
+        return root.next;
+    }
+
+    public static String printLinkNode(ListNode node) {
+        if (node == null) {
+            return "";
+        }
+        String result = "";
+        while (node != null) {
+            result += node.val + "->";
+            node = node.next;
+        }
+        return result.substring(0, result.length() - 2);
+    }
 
     /**
      * OJ's Binary Tree Serialization:

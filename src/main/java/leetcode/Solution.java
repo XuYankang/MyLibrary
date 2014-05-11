@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * Created by Administrator on 2014/5/6.
+ * Created by Jacob on 2014/5/6.
  */
 public class Solution {
 
