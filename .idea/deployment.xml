@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="tomcat8">
-    <serverData>
-      <paths name="tomcat8">
-        <serverdata>
-          <mappings>
-            <mapping deploy="\" local="$PROJECT_DIR$/" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
+  <component name="PublishConfigData" serverName="tomcat8" />
 </project>
 
