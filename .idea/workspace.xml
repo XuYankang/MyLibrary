@@ -6,16 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="044355d6-dc76-4beb-9a12-ac86b6ae98d6" name="Default" comment="" />
-    <list id="8dba9c10-90d5-494a-93c7-31677029dd54" name="New changelist" comment="">
-      <change type="DELETED" beforePath="C:\Users\Jacob\IdeaProjects\MyLibrary1\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jacob\IdeaProjects\MyLibrary1\.idea\deployment.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jacob\IdeaProjects\MyLibrary1\.idea\uiDesigner.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="044355d6-dc76-4beb-9a12-ac86b6ae98d6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/leetcode/LongestSubstringWithoutRepeatingCharacters.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java" afterPath="$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
+    <list id="8dba9c10-90d5-494a-93c7-31677029dd54" name="New changelist" comment="" />
     <ignored path="MyLibrary.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -113,19 +109,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LongestPalindromicSubstring.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java">
+      <file leaf-file-name="LongestSubstringWithoutRepeatingCharacters.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/LongestSubstringWithoutRepeatingCharacters.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="8" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1936">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Solution.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="28" selection-start="202" selection-end="202" vertical-scroll-proportion="0.28285715" vertical-offset="0" max-vertical-offset="700">
+            <state line="5" column="55" selection-start="73" selection-end="115" vertical-scroll-proportion="0.16011645" vertical-offset="0" max-vertical-offset="1188">
               <folding />
             </state>
           </provider>
@@ -158,9 +145,10 @@
         <option value="$PROJECT_DIR$/src/main/java/leetcode/Tool.java" />
         <option value="$PROJECT_DIR$/src/main/java/leetcode/MergeTwoSortedLists.java" />
         <option value="$PROJECT_DIR$/src/main/java/leetcode/LongestValidParentheses.java" />
-        <option value="$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java" />
         <option value="$PROJECT_DIR$/src/main/java/other/DifferIds.java" />
         <option value="$PROJECT_DIR$/src/main/java/leetcode/Solution.java" />
+        <option value="$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java" />
+        <option value="$PROJECT_DIR$/src/main/java/leetcode/LongestSubstringWithoutRepeatingCharacters.java" />
       </list>
     </option>
   </component>
@@ -245,6 +233,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyLibrary1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyLibrary1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leetcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -288,7 +302,12 @@
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="mylibrary" />
   </component>
-  <component name="RunManager" selected="Application.Solution">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="leetcode" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.LongestSubstringWithoutRepeatingCharacters">
     <configuration default="false" name="MergeTwoSortedLists" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -297,28 +316,6 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="leetcode.MergeTwoSortedLists" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MyLibrary" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Tool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="leetcode.Tool" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -402,6 +399,34 @@
       <module name="MyLibrary" />
       <envs />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="LongestSubstringWithoutRepeatingCharacters" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="leetcode.LongestSubstringWithoutRepeatingCharacters" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MyLibrary" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -618,18 +643,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.MergeTwoSortedLists" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Tool" />
-      <item index="2" class="java.lang.String" itemvalue="Application.LongestValidParentheses" />
-      <item index="3" class="java.lang.String" itemvalue="Application.LongestPalindromicSubstring" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Solution" />
+      <item index="1" class="java.lang.String" itemvalue="Application.LongestValidParentheses" />
+      <item index="2" class="java.lang.String" itemvalue="Application.LongestPalindromicSubstring" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Solution" />
+      <item index="4" class="java.lang.String" itemvalue="Application.LongestSubstringWithoutRepeatingCharacters" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Solution" />
+        <item index="0" class="java.lang.String" itemvalue="Application.LongestSubstringWithoutRepeatingCharacters" />
         <item index="1" class="java.lang.String" itemvalue="Application.LongestPalindromicSubstring" />
-        <item index="2" class="java.lang.String" itemvalue="Application.LongestValidParentheses" />
-        <item index="3" class="java.lang.String" itemvalue="Application.MergeTwoSortedLists" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Tool" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Solution" />
+        <item index="3" class="java.lang.String" itemvalue="Application.LongestValidParentheses" />
+        <item index="4" class="java.lang.String" itemvalue="Application.MergeTwoSortedLists" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -667,7 +692,7 @@
       <workItem from="1399787354699" duration="20550000" />
       <workItem from="1399943545401" duration="748000" />
       <workItem from="1399983189382" duration="1060000" />
-      <workItem from="1399984456967" duration="284000" />
+      <workItem from="1399984456967" duration="5574000" />
     </task>
     <task id="LOCAL-00001" summary="add some leetcode">
       <created>1399791313677</created>
@@ -685,11 +710,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37116000" />
+    <option name="totallyTimeSpent" value="42406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -711,7 +736,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13258786" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13258786" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21235102" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -770,9 +795,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="19" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0" vertical-offset="1391" max-vertical-offset="3146">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1272#1292#0" expanded="true" />
-            <element signature="e#1346#1355#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1272#1292#0" expanded="false" />
+            <element signature="e#1346#1355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -857,9 +882,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1826">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1272#1292#0" expanded="true" />
-            <element signature="e#1346#1355#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1272#1292#0" expanded="false" />
+            <element signature="e#1346#1355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -880,13 +905,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="24" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1958">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#296#305#0" expanded="true" />
-            <element signature="e#585#605#0" expanded="true" />
-            <element signature="e#695#704#0" expanded="true" />
-            <element signature="e#887#896#0" expanded="true" />
-            <element signature="e#1742#1762#0" expanded="true" />
-            <element signature="e#1886#1895#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#296#305#0" expanded="false" />
+            <element signature="e#585#605#0" expanded="false" />
+            <element signature="e#695#704#0" expanded="false" />
+            <element signature="e#887#896#0" expanded="false" />
+            <element signature="e#1742#1762#0" expanded="false" />
+            <element signature="e#1886#1895#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -894,13 +919,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/Tool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="19" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="2310">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/MergeTwoSortedLists.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="13" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.9114286" vertical-offset="132" max-vertical-offset="1276">
           <folding />
         </state>
       </provider>
@@ -916,9 +934,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="5" selection-start="485" selection-end="809" vertical-scroll-proportion="0.47" vertical-offset="353" max-vertical-offset="2046">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1318#1327#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1318#1327#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/other/DifferIds.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="33" selection-start="444" selection-end="444" vertical-scroll-proportion="-1.0758853" vertical-offset="1056" max-vertical-offset="1650">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="214" selection-end="214" vertical-scroll-proportion="0.44" vertical-offset="0" max-vertical-offset="700">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -929,25 +963,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/other/DifferIds.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/MergeTwoSortedLists.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="33" selection-start="444" selection-end="444" vertical-scroll-proportion="-1.0758853" vertical-offset="1056" max-vertical-offset="1650">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="35" column="13" selection-start="1041" selection-end="1055" vertical-scroll-proportion="0.9114286" vertical-offset="132" max-vertical-offset="1276">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/LongestPalindromicSubstring.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="8" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1936">
+        <state line="35" column="56" selection-start="1172" selection-end="1174" vertical-scroll-proportion="0.25142857" vertical-offset="594" max-vertical-offset="2068">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/Solution.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/leetcode/LongestSubstringWithoutRepeatingCharacters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="28" selection-start="202" selection-end="202" vertical-scroll-proportion="0.28285715" vertical-offset="0" max-vertical-offset="700">
+        <state line="5" column="55" selection-start="73" selection-end="115" vertical-scroll-proportion="0.16011645" vertical-offset="0" max-vertical-offset="1188">
           <folding />
         </state>
       </provider>
