@@ -24,7 +24,7 @@ public class Tool {
         if (s.length() == 0) {
             return null;
         }
-        String[] ss = s.split(",");
+        String[] ss = s.split(" ");
         ListNode root = new ListNode(0);
         ListNode cur = root;
         for (String temp : ss) {
