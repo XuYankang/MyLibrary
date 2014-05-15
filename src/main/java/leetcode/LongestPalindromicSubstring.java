@@ -30,7 +30,6 @@ public class LongestPalindromicSubstring {
             }
         }
         for (int j = 0; j < s.length(); j++) {
-
             for (int i = j; i >= 0; i--) {
                 if (i == j) {
                     table[i][j] = true;
@@ -44,6 +43,12 @@ public class LongestPalindromicSubstring {
             }
         }
 
+//        for (int i = 0; i < s.length(); i++) {
+//            for (int j = 0; j < s.length(); j++) {
+//                System.out.print(table[i][j] + "\t");
+//            }
+//            System.out.println();
+//        }
 
 
         int max = 0;
@@ -55,6 +60,7 @@ public class LongestPalindromicSubstring {
                     if (max < j - i) {
                         maxI = i;
                         maxJ = j;
+                        max = j - i;
                     }
                 }
             }
