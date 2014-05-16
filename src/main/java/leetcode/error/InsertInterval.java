@@ -41,49 +41,27 @@ public class InsertInterval {
 
 
         ArrayList<Interval> result = new ArrayList<Interval>();
-        if (intervals.size() == 0) {
-            result.add(newInterval);
-            return result;
-        }
-        if (newInterval.end < intervals.get(0).start) {
-            intervals.add(0, newInterval);
-            return intervals;
-        }
-        if (newInterval.start > intervals.get(intervals.size() - 1).end) {
-            intervals.add(newInterval);
-            return intervals;
-        }
-        Interval last = intervals.get(0);
-        boolean merged = false;
-        for (int i = 0; i < intervals.size(); i++) {
-            Interval in = intervals.get(i);
-            if (newInterval.start >= in.start && newInterval.end <= in.end) {
-                result.add(in);
-                newInterval = in;
-            } else if (newInterval.start > in.end) {
-                result.add(in);
-            } else if (newInterval.end < in.start) {
 
-                if (merged) {
-                    result.add(newInterval);
-                    merged = false;
-                }
-                result.add(in);
+        Interval last = newInterval;
+        for (Interval in : intervals) {
+            ArrayList<Interval> t = merge(last, in);
+            if (t.size() == 1) {
+                last = t.get(0);
             } else {
-                newInterval = merge(newInterval, in);
-                merged = true;
+                result.add(t.get(0));
+                last = t.get(1);
             }
         }
-        if (merged) {
-            result.add(newInterval);
-        }
+        result.add(last);
+
         return result;
 
     }
 
 
-    public Interval merge(Interval x, Interval y) {
+    public ArrayList<Interval> merge(Interval x, Interval y) {
         Interval small, big;
+        ArrayList<Interval> result = new ArrayList<Interval>();
         if (x.start < y.start) {
             small = x;
             big = y;
@@ -91,19 +69,21 @@ public class InsertInterval {
             small = y;
             big = x;
         }
-        if (big.end < small.end) {
-            return small;
+
+        if (big.start > small.end) {
+            //can't merge
+            result.add(small);
+            result.add(big);
+        } else if (big.end < small.end) {
+            //big is in small
+            result.add(small);
         } else {
             Interval interval = new Interval(small.start, big.end);
-            return interval;
+            result.add(interval);
         }
+        return result;
 
     }
 
 
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
-    }
 }
