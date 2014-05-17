@@ -1,4 +1,4 @@
-package leetcode.error;
+package leetcode;
 
 import leetcode.base.Interval;
 
