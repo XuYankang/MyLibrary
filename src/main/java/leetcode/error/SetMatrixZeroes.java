@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.error;
 
 /**
  * Created by Jacob on 2014/5/6.
