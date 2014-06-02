@@ -1,11 +1,8 @@
 package leetcode;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Stack;
 
-=======
->>>>>>> 7825f4d78cae10101d0dcbca57990544a144f7d7
 /**
  * Created by Jacob on 2014/5/6.
  */
@@ -13,7 +10,6 @@ public class WordSearch {
 
     public static void main(String[] args) {
         WordSearch solution = new WordSearch();
-<<<<<<< HEAD
         char[][] board = new char[3][4];
         board[0] = "ABCD".toCharArray();
         board[1] = "SFCS".toCharArray();
@@ -30,22 +26,14 @@ public class WordSearch {
 
         int x;
         int y;
-=======
-        System.out.println(solution.exist(
-                new char[][]{"BA".toCharArray()}, "AB"));
->>>>>>> 7825f4d78cae10101d0dcbca57990544a144f7d7
     }
 
     /**
      * Given a 2D board and a word, find if the word exists in the grid.
      * <p/>
-<<<<<<< HEAD
      * The word can be constructed from letters of sequentially adjacent cell,
      * where "adjacent" cells are those horizontally or vertically neighboring.
      * The same letter cell may not be used more than once.
-=======
-     * The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
->>>>>>> 7825f4d78cae10101d0dcbca57990544a144f7d7
      * <p/>
      * For example,
      * Given board =
@@ -64,7 +52,6 @@ public class WordSearch {
      * @return
      */
     public boolean exist(char[][] board, String word) {
-<<<<<<< HEAD
 
         if (board.length == 0) {
             return false;
@@ -116,38 +103,6 @@ public class WordSearch {
         }
         return neighbor;
 
-=======
-        if (board.length == 0 || board == null || word == null || word.length() == 0) {
-            return false;
-        }
-        boolean[][] visited = new boolean[board.length][board[0].length];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (dfs(board, word, 0, visited, i, j)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-
-    }
-
-    private boolean dfs(char[][] board, String word, int index, boolean[][] visited, int i, int j) {
-        if (i < 0 || i > board.length - 1 || j < 0 || j > board[0].length - 1 ||
-                visited[i][j] == true || word.charAt(index) != board[i][j]) {
-            return false;
-        }
-        if (index == word.length() - 1) {
-            return true;
-        }
-        visited[i][j] = true;
-        boolean result = dfs(board, word, index + 1, visited, i + 1, j) ||
-                dfs(board, word, index + 1, visited, i - 1, j) ||
-                dfs(board, word, index + 1, visited, i, j + 1) ||
-                dfs(board, word, index + 1, visited, i, j - 1);
-        visited[i][j] = false;
-        return result;
->>>>>>> 7825f4d78cae10101d0dcbca57990544a144f7d7
     }
 
 
