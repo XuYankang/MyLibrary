@@ -34,18 +34,18 @@ public class SearchinRotatedSortedArray {
             }
         }
 
-        int left = 0;
-        int right = A.length - 1;
-        while (left <= right) {
-            int relativeMid = (left + right) / 2;
+        int relativeStart = 0;
+        int relativeEnd = A.length - 1;
+        while (relativeStart <= relativeEnd) {
+            int relativeMid = (relativeStart + relativeEnd) / 2;
             int mid = pivot + relativeMid >= A.length ? pivot + relativeMid - A.length : pivot + relativeMid;
 
             if (A[mid] == target) {
                 return mid;
             } else if (A[mid] > target) {
-                right = relativeMid - 1;
+                relativeEnd = relativeMid - 1;
             } else {
-                left = relativeMid + 1;
+                relativeStart = relativeMid + 1;
             }
 
 
