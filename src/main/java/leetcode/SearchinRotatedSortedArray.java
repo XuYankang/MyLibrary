@@ -53,11 +53,4 @@ public class SearchinRotatedSortedArray {
 
         return -1;
     }
-
-
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
-    }
 }
