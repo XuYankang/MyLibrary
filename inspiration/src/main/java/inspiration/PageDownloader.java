@@ -1,7 +1,6 @@
 package inspiration;
 
 
-import inspiration.tool.TimeTool;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +17,9 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 
 /**
@@ -30,14 +32,40 @@ public class PageDownloader implements Runnable {
     String hudongItemName;
     String url;
 
+
     public PageDownloader(String hudongItemName) {
         this.hudongItemName = hudongItemName;
         this.url = ConstResource.hudongPrefix + hudongItemName;
     }
 
     public static void main(String[] args) {
+        Executor executor = Executors.newCachedThreadPool();
+        executor.execute(new PageDownloader("毛泽东"));
+        ConstResource.urlSet.add("毛泽东");
 
-        new Thread(new PageDownloader("菲利普·马萨")).start();
+        try {
+            Thread.sleep(1000 * 5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        while (!ConstResource.blockingQueue.isEmpty()) {
+            System.out.println("blocking queue:" + ConstResource.blockingQueue);
+            try {
+                String item = ConstResource.blockingQueue.poll(1, TimeUnit.MINUTES);
+                executor.execute(new PageDownloader(item));
+                System.out.println("get " + item);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                Thread.sleep(1000 * 4);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
 
     }
 
@@ -47,10 +75,6 @@ public class PageDownloader implements Runnable {
     }
 
     private void download() {
-
-        synchronized (ConstResource.urlMap) {
-            ConstResource.urlMap.put(hudongItemName, TimeTool.getCurrentTime());
-        }
 
         try {
             URL url1 = new URL(url);
@@ -62,26 +86,33 @@ public class PageDownloader implements Runnable {
 
             HashMap<String, String> urlMapLocal = new HashMap<String, String>();
 
+            ArrayList<String> urlList = new ArrayList<String>();
+
             for (Element e : links) {
                 String href = e.attr("href");
                 Matcher matcher = ConstResource.pattern.matcher(href);
                 if (matcher.find()) {
                     String hudongItem = matcher.group(1);
                     hudongItem = URLDecoder.decode(hudongItem, "UTF-8");
-                    urlMapLocal.put(hudongItem, "waiting");
+                    urlList.add(hudongItem);
                 }
             }
 
-            synchronized (ConstResource.urlMap) {
-                ConstResource.urlMap.putAll(urlMapLocal);
+            for (String url : urlList) {
+                if (!ConstResource.urlSet.contains(url)) {
+                    ConstResource.urlSet.add(url);
+                    ConstResource.blockingQueue.add(url);
+                }
             }
 
 
             saveToFile(hudongItemName, urlMapLocal.keySet(), html);
-            System.out.println("finish " + hudongItemName);
+            System.out.println("saved " + hudongItemName + " in " + ConstResource.hudongPrefix);
 
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("error " + hudongItemName + ", add to queue tail");
+            ConstResource.blockingQueue.add(hudongItemName);
         }
     }
 

@@ -1,7 +1,10 @@
 package inspiration;
 
 import java.io.File;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.regex.Pattern;
 
 /**
@@ -32,6 +35,10 @@ public class ConstResource {
 
     public static final File downloaded = new File(savedDir + "downloaded.txt");
     public static final File waiting = new File(savedDir + "waiting.txt");
+
+    public static final BlockingQueue<String> blockingQueue = new LinkedBlockingDeque<String>();
+
+    public static final CopyOnWriteArraySet<String> urlSet = new CopyOnWriteArraySet<String>();
 
 
     public static int maxThread = 10;
