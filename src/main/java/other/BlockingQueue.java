@@ -1,4 +1,4 @@
-package concurrency;
+package other;
 
 import java.util.LinkedList;
 import java.util.Queue;

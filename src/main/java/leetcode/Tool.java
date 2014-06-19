@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Created by Jacob on 14-5-10.
@@ -12,6 +9,14 @@ public class Tool {
 
     public static void main(String[] args) {
         System.out.println(Tool.printLinkNode(stringToLinkNode("1,2,3,5")));
+    }
+
+    public static int[] generateContinuousNumber(int start, int end) {
+        int[] array = new int[end - start + 1];
+        for (int i = 0; i < end - start + 1; i++) {
+            array[i] = i + start;
+        }
+        return array;
     }
 
     public static void printTree(TreeNode t) {
