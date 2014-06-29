@@ -1,39 +1,29 @@
 package concurrency;
 
-import tool.ConsoleTool;
-
-import java.util.concurrent.BlockingQueue;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2014/6/18.
  */
 public class Consumer implements Runnable {
-    String name;
-    BlockingQueue<Good> blockingQueue;
+    private Drop drop;
 
-
-    public Consumer(String name, BlockingQueue<Good> blockingQueue) {
-        this.name = name;
-        this.blockingQueue = blockingQueue;
+    public Consumer(Drop drop) {
+        this.drop = drop;
     }
 
     @Override
     public void run() {
-        while (true) {
-            //ConsoleTool.print(name, "start consume...");
+        Random random = new Random();
+        String message = drop.get();
+        while (message != "Done") {
+            System.out.println("consumer received: " + message);
+            message = drop.get();
             try {
-                if (blockingQueue.isEmpty()) {
-                    ConsoleTool.print("queue is empty..");
-                }
-                Good good = blockingQueue.take();
-                Thread.sleep(2000);
-                ConsoleTool.print("consumed", good);
-
+                Thread.sleep(random.nextInt(5000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 }

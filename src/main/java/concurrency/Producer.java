@@ -1,39 +1,31 @@
 package concurrency;
 
-import tool.ConsoleTool;
-
-import java.util.concurrent.BlockingQueue;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2014/6/18.
  */
 public class Producer implements Runnable {
 
-    String name;
-    BlockingQueue<Good> blockingQueue;
+    private Drop drop;
 
-    public Producer(String name, BlockingQueue<Good> blockingQueue) {
-        this.name = name;
-        this.blockingQueue = blockingQueue;
+    public Producer(Drop drop) {
+        this.drop = drop;
     }
+
 
     @Override
     public void run() {
-        while (true) {
-
-            //ConsoleTool.print(name, "start producing...");
+        String messages[] = {"a", "b", "c", "d"};
+        Random random = new Random();
+        for (String s : messages) {
+            drop.set(s);
             try {
-                if (blockingQueue.size() == 5) {
-                    ConsoleTool.print("queue is full...");
-                }
-                Good good = Good.generate();
-                blockingQueue.put(good);
-                Thread.sleep(1000);
-                ConsoleTool.print("produced", good);
+                Thread.sleep(random.nextInt(5000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
+        drop.set("Done");
     }
 }

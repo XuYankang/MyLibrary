@@ -13,7 +13,7 @@
   <property name="compiler.debug" value="on"/>
   <property name="compiler.generate.no.warnings" value="off"/>
   <property name="compiler.args" value=""/>
-  <property name="compiler.max.memory" value="128m"/>
+  <property name="compiler.max.memory" value="700m"/>
   <patternset id="ignored.files">
     <exclude name="**/CVS/**"/>
     <exclude name="**/SCCS/**"/>
@@ -92,16 +92,49 @@
   
   <!-- Project Libraries -->
   
+  <path id="library.maven:_commons-codec:commons-codec:1.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
+  </path>
+  
   <path id="library.maven:_commons-io:commons-io:1.3.2.classpath">
     <pathelement location="${path.variable.maven_repository}/commons-io/commons-io/1.3.2/commons-io-1.3.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-logging:commons-logging:1.1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.11.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.11/junit-4.11.jar"/>
   </path>
   
   <path id="library.maven:_mysql:mysql-connector-java:5.1.30.classpath">
     <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar"/>
   </path>
   
+  <path id="library.maven:_org.apache.httpcomponents:httpclient:4.3.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar"/>
+  </path>
   
-  <!-- Global Libraries -->
+  <path id="library.maven:_org.apache.httpcomponents:httpcore:4.3.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.logging.log4j:log4j-api:2.0-rc1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.logging.log4j:log4j-core:2.0-rc1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jsoup:jsoup:1.7.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jsoup/jsoup/1.7.3/jsoup-1.7.3.jar"/>
+  </path>
   
   
   <!-- Application Server Libraries -->
@@ -120,24 +153,315 @@
   
   <!-- Modules -->
   
-  <import file="${basedir}/module_mylibrary.xml"/>
+  
+  <!-- Module inspiration -->
+  
+  <dirname property="module.inspiration.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.inspiration" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.inspiration" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.inspiration" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.inspiration" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="inspiration.output.dir" value="${module.inspiration.basedir}/inspiration/target/classes"/>
+  <property name="inspiration.testoutput.dir" value="${module.inspiration.basedir}/inspiration/target/test-classes"/>
+  
+  <path id="inspiration.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="inspiration.module.production.classpath">
+    <path refid="${module.jdk.classpath.inspiration}"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_org.jsoup:jsoup:1.7.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.0-rc1.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.0-rc1.classpath"/>
+  </path>
+  
+  <path id="inspiration.runtime.production.module.classpath">
+    <pathelement location="${inspiration.output.dir}"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_org.jsoup:jsoup:1.7.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.0-rc1.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.0-rc1.classpath"/>
+  </path>
+  
+  <path id="inspiration.module.classpath">
+    <path refid="${module.jdk.classpath.inspiration}"/>
+    <pathelement location="${inspiration.output.dir}"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_org.jsoup:jsoup:1.7.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.0-rc1.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.0-rc1.classpath"/>
+  </path>
+  
+  <path id="inspiration.runtime.module.classpath">
+    <pathelement location="${inspiration.testoutput.dir}"/>
+    <pathelement location="${inspiration.output.dir}"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_org.jsoup:jsoup:1.7.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.0-rc1.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.0-rc1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.inspiration">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.inspiration">
+    <patternset refid="excluded.from.module.inspiration"/>
+  </patternset>
+  
+  <path id="inspiration.module.sourcepath">
+    <dirset dir="${module.inspiration.basedir}/inspiration">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="inspiration.module.test.sourcepath">
+    <dirset dir="${module.inspiration.basedir}/inspiration">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.inspiration" depends="compile.module.inspiration.production,compile.module.inspiration.tests" description="Compile module inspiration"/>
+  
+  <target name="compile.module.inspiration.production" depends="register.custom.compilers" description="Compile module inspiration; production classes">
+    <mkdir dir="${inspiration.output.dir}"/>
+    <javac2 destdir="${inspiration.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.inspiration}/javac">
+      <compilerarg line="${compiler.args.inspiration}"/>
+      <bootclasspath refid="inspiration.module.bootclasspath"/>
+      <classpath refid="inspiration.module.production.classpath"/>
+      <src refid="inspiration.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.inspiration"/>
+    </javac2>
+    
+    <copy todir="${inspiration.output.dir}">
+      <fileset dir="${module.inspiration.basedir}/inspiration/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.inspiration.basedir}/inspiration/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.inspiration.tests" depends="register.custom.compilers,compile.module.inspiration.production" description="compile module inspiration; test classes" unless="skip.tests">
+    <mkdir dir="${inspiration.testoutput.dir}"/>
+    <javac2 destdir="${inspiration.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.inspiration}/javac">
+      <compilerarg line="${compiler.args.inspiration}"/>
+      <bootclasspath refid="inspiration.module.bootclasspath"/>
+      <classpath refid="inspiration.module.classpath"/>
+      <src refid="inspiration.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.inspiration"/>
+    </javac2>
+    
+    <copy todir="${inspiration.testoutput.dir}">
+      <fileset dir="${module.inspiration.basedir}/inspiration/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.inspiration" description="cleanup module">
+    <delete dir="${inspiration.output.dir}"/>
+    <delete dir="${inspiration.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module MyLibrary -->
+  
+  <dirname property="module.mylibrary.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.mylibrary" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.mylibrary" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.mylibrary" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.mylibrary" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="mylibrary.output.dir" value="${module.mylibrary.basedir}/target/classes"/>
+  <property name="mylibrary.testoutput.dir" value="${module.mylibrary.basedir}/target/test-classes"/>
+  
+  <path id="mylibrary.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mylibrary.module.production.classpath">
+    <path refid="${module.jdk.classpath.mylibrary}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+  </path>
+  
+  <path id="mylibrary.runtime.production.module.classpath">
+    <pathelement location="${mylibrary.output.dir}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+  </path>
+  
+  <path id="mylibrary.module.classpath">
+    <path refid="${module.jdk.classpath.mylibrary}"/>
+    <pathelement location="${mylibrary.output.dir}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+  </path>
+  
+  <path id="mylibrary.runtime.module.classpath">
+    <pathelement location="${mylibrary.testoutput.dir}"/>
+    <pathelement location="${mylibrary.output.dir}"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.30.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:1.3.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.3.3.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.3.2.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.3.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.6.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mylibrary">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mylibrary">
+    <patternset refid="excluded.from.module.mylibrary"/>
+  </patternset>
+  
+  <path id="mylibrary.module.sourcepath">
+    <dirset dir="${module.mylibrary.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="mylibrary.module.test.sourcepath">
+    <dirset dir="${module.mylibrary.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.mylibrary" depends="compile.module.mylibrary.production,compile.module.mylibrary.tests" description="Compile module MyLibrary"/>
+  
+  <target name="compile.module.mylibrary.production" depends="register.custom.compilers" description="Compile module MyLibrary; production classes">
+    <mkdir dir="${mylibrary.output.dir}"/>
+    <javac2 destdir="${mylibrary.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mylibrary}/javac">
+      <compilerarg line="${compiler.args.mylibrary}"/>
+      <bootclasspath refid="mylibrary.module.bootclasspath"/>
+      <classpath refid="mylibrary.module.production.classpath"/>
+      <src refid="mylibrary.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mylibrary"/>
+    </javac2>
+    
+    <copy todir="${mylibrary.output.dir}">
+      <fileset dir="${module.mylibrary.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.mylibrary.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.mylibrary.tests" depends="register.custom.compilers,compile.module.mylibrary.production" description="compile module MyLibrary; test classes" unless="skip.tests">
+    <mkdir dir="${mylibrary.testoutput.dir}"/>
+    <javac2 destdir="${mylibrary.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mylibrary}/javac">
+      <compilerarg line="${compiler.args.mylibrary}"/>
+      <bootclasspath refid="mylibrary.module.bootclasspath"/>
+      <classpath refid="mylibrary.module.classpath"/>
+      <src refid="mylibrary.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mylibrary"/>
+    </javac2>
+    
+    <copy todir="${mylibrary.testoutput.dir}">
+      <fileset dir="${module.mylibrary.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.mylibrary" description="cleanup module">
+    <delete dir="${mylibrary.output.dir}"/>
+    <delete dir="${mylibrary.testoutput.dir}"/>
+  </target>
   
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
   
-  <target name="clean" depends="clean.module.mylibrary, clean.artifact.mylibrary:war_exploded" description="cleanup all"/>
+  <target name="clean" depends="clean.module.inspiration, clean.module.mylibrary, clean.artifact.mylibrary:war_exploded" description="cleanup all"/>
   
-  <target name="build.modules" depends="init, clean, compile.module.mylibrary" description="build all modules"/>
+  <target name="build.modules" depends="init, clean, compile.module.inspiration, compile.module.mylibrary" description="build all modules"/>
   
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.inspiration:jar" value="${basedir}/out/artifacts/inspiration_jar"/>
+    <property name="artifact.output.inspiration:jar2" value="${basedir}/out/artifacts/inspiration_jar2"/>
     <property name="artifact.output.mylibrary:war_exploded" value="${basedir}/classes/artifacts/MyLibrary_war_exploded"/>
     <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.inspiration.jar" value="${artifacts.temp.dir}/inspiration.jar"/>
+    <property name="temp.jar.path.inspiration.jar2" value="${artifacts.temp.dir}/1/inspiration.jar"/>
+    <mkdir dir="${artifacts.temp.dir}/1"/>
   </target>
   
   <target name="clean.artifact.mylibrary:war_exploded" description="clean MyLibrary:war exploded artifact output">
     <delete dir="${artifact.output.mylibrary:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.inspiration:jar" depends="init.artifacts, compile.module.inspiration" description="Build &#39;inspiration:jar&#39; artifact">
+    <property name="artifact.temp.output.inspiration:jar" value="${artifacts.temp.dir}/inspiration_jar"/>
+    <mkdir dir="${artifact.temp.output.inspiration:jar}"/>
+    <jar destfile="${temp.jar.path.inspiration.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${inspiration.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jsoup/jsoup/1.7.3/jsoup-1.7.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-io/commons-io/1.3.2/commons-io-1.3.2.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.inspiration.jar}" tofile="${artifact.temp.output.inspiration:jar}/inspiration.jar"/>
+  </target>
+  
+  <target name="artifact.inspiration:jar2" depends="init.artifacts, compile.module.inspiration" description="Build &#39;inspiration:jar2&#39; artifact">
+    <property name="artifact.temp.output.inspiration:jar2" value="${artifacts.temp.dir}/inspiration_jar2"/>
+    <mkdir dir="${artifact.temp.output.inspiration:jar2}"/>
+    <jar destfile="${temp.jar.path.inspiration.jar2}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${inspiration.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jsoup/jsoup/1.7.3/jsoup-1.7.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-io/commons-io/1.3.2/commons-io-1.3.2.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.inspiration.jar2}" tofile="${artifact.temp.output.inspiration:jar2}/inspiration.jar"/>
   </target>
   
   <target name="artifact.mylibrary:war_exploded" depends="init.artifacts, compile.module.mylibrary" description="Build &#39;MyLibrary:war exploded&#39; artifact">
@@ -149,7 +473,15 @@
     </copy>
   </target>
   
-  <target name="build.all.artifacts" depends="artifact.mylibrary:war_exploded" description="Build all artifacts">
+  <target name="build.all.artifacts" depends="artifact.inspiration:jar, artifact.inspiration:jar2, artifact.mylibrary:war_exploded" description="Build all artifacts">
+    <mkdir dir="${artifact.output.inspiration:jar}"/>
+    <copy todir="${artifact.output.inspiration:jar}">
+      <fileset dir="${artifact.temp.output.inspiration:jar}"/>
+    </copy>
+    <mkdir dir="${artifact.output.inspiration:jar2}"/>
+    <copy todir="${artifact.output.inspiration:jar2}">
+      <fileset dir="${artifact.temp.output.inspiration:jar2}"/>
+    </copy>
     
     <!-- Delete temporary files -->
     <delete dir="${artifacts.temp.dir}"/>
