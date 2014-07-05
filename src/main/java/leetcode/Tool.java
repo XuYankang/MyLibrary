@@ -69,7 +69,7 @@ public class Tool {
      * @param sorce
      */
     public static TreeNode stringToTree(String sorce) {
-        String[] node = sorce.split(",");
+        String[] node = sorce.split(" ");
         if (node.length == 0) {
             return null;
         }
