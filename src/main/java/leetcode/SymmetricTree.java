@@ -9,9 +9,32 @@ public class SymmetricTree {
 
     public static void main(String[] args) {
         SymmetricTree solution = new SymmetricTree();
-        TreeNode root = Tool.stringToTree("1,2,3,3,#,2,#");
+        TreeNode root = Tool.stringToTree("1 2 2 3 4 4 3");
 
-        System.out.println(solution.isSymmetric(root));
+        System.out.println(solution.isSymmetric1(root));
+    }
+
+    public boolean isSymmetric1(TreeNode root) {
+
+        if (root == null) {
+            return true;
+        }
+
+        return isSymmetric(root.left, root.right);
+
+
+    }
+
+    public boolean isSymmetric(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if ((left == null && right != null) || (left != null && right == null) || left.val != right.val) {
+            return false;
+        }
+
+        return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
+
     }
 
     /**

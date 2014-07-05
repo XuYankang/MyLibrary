@@ -7,9 +7,13 @@ public class PathSum {
 
 
     public static void main(String[] args) {
-        TreeNode treeNode = Tool.stringToTree("5 4 8 11 # 13 4 7 2 # # # # # # # 1");
-
+        TreeNode treeNode = Tool.stringToTree("5 4 8 11 # 13 4 7 2 # # # 1");
+        PathSum pathSum = new PathSum();
+        boolean result = pathSum.hasPathSum(treeNode, 22);
+        System.out.println(result);
     }
+
+
     /**
      * Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that
      * adding up all the values along the path equals the given sum.

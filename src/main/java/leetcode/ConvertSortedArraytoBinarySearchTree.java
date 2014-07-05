@@ -22,10 +22,7 @@ public class ConvertSortedArraytoBinarySearchTree {
         if (num == null || num.length == 0) {
             return null;
         }
-
         return sortedArrayToBST(num, 0, num.length);
-
-
     }
 
     public TreeNode sortedArrayToBST(int[] num, int start, int end) {
@@ -34,20 +31,17 @@ public class ConvertSortedArraytoBinarySearchTree {
         }
         int mid = (start + end) / 2;
         TreeNode root = new TreeNode(num[mid]);
-
-        if (mid - start > 0) {
-            root.left = sortedArrayToBST(num, start, mid);
-        }
-        if (end - mid > 0) {
-            root.right = sortedArrayToBST(num, mid + 1, end);
-        }
+        root.left = sortedArrayToBST(num,start,mid);
+        root.right = sortedArrayToBST(num,mid+1,end);
+//
+//        if (mid - start > 0) {
+//            root.left = sortedArrayToBST(num, start, mid);
+//        }
+//        if (end - mid > 0) {
+//            root.right = sortedArrayToBST(num, mid + 1, end);
+//        }
         return root;
     }
 
 
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
-    }
 }

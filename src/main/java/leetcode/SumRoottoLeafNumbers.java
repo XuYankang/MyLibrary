@@ -9,7 +9,7 @@ public class SumRoottoLeafNumbers {
 
     public static void main(String[] args) {
         SumRoottoLeafNumbers solution = new SumRoottoLeafNumbers();
-        System.out.println(solution.sumNumbers(Tool.stringToTree("1")));
+        System.out.println(solution.sumNumbers(Tool.stringToTree("1 2 # 3 4 # # # #")));
     }
 
     /**
@@ -39,10 +39,23 @@ public class SumRoottoLeafNumbers {
         }
         int sum = 0;
 
-        ArrayList<Integer> current = new ArrayList<Integer>();
-        sum = findPath(root, current);
+        //ArrayList<Integer> current = new ArrayList<Integer>();
+        // sum = findPath(root, current);
 
-        return sum;
+        //return sum;
+        return findPath(root, 0);
+    }
+
+    int findPath(TreeNode root, int cur) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return cur * 10 + root.val;
+        }
+
+        return findPath(root.left, cur * 10 + root.val) + +findPath(root.right, cur * 10 + root.val);
     }
 
     private int findPath(TreeNode root, ArrayList<Integer> current) {
@@ -66,9 +79,4 @@ public class SumRoottoLeafNumbers {
     }
 
 
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
-    }
 }
