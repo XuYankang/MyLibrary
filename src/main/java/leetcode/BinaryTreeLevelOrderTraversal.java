@@ -1,7 +1,9 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by Jacob on 2014/5/6.
@@ -10,7 +12,7 @@ public class BinaryTreeLevelOrderTraversal {
 
     public static void main(String[] args) {
         BinaryTreeLevelOrderTraversal solution = new BinaryTreeLevelOrderTraversal();
-        System.out.println(solution.levelOrder(Tool.stringToTree("3,9,20,#,#,15,7")));
+        System.out.println(solution.levelOrder1(Tool.stringToTree("3,9,20,#,#,15,7")));
     }
 
     /**
@@ -69,10 +71,32 @@ public class BinaryTreeLevelOrderTraversal {
 
     }
 
+    public List<List<Integer>> levelOrder1(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
 
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
+        if (root == null) {
+            return result;
+        }
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<Integer>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode temp = queue.poll();
+                list.add(temp.val);
+                if (temp.left != null) {
+                    queue.offer(temp.left);
+                }
+                if (temp.right != null) {
+                    queue.offer(temp.right);
+                }
+            }
+            result.add(list);
+        }
+        return result;
+
     }
+
+
 }

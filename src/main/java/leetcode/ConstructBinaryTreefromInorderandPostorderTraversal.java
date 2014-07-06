@@ -52,10 +52,4 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
 
         return root;
     }
-
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
-    }
 }

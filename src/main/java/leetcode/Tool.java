@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class Tool {
 
     public static void main(String[] args) {
-        System.out.println(Tool.printLinkNode(stringToLinkNode("1,2,3,5")));
+        System.out.println(Tool.printLinkNode(stringToLinkNode("1 2,3,5")));
     }
 
     public static int[] generateContinuousNumber(int start, int end) {
@@ -66,10 +66,14 @@ public class Tool {
      * 5
      * The above binary tree is serialized as "{1,2,3,#,#,4,#,#,5}".
      *
-     * @param sorce
+     * @param source
      */
-    public static TreeNode stringToTree(String sorce) {
-        String[] node = sorce.split(" ");
+    public static TreeNode stringToTree(String source) {
+        String seperator = " ";
+        if (source.contains(",")) {
+            seperator = ",";
+        }
+        String[] node = source.split(seperator);
         if (node.length == 0) {
             return null;
         }

@@ -11,6 +11,7 @@ public class GenerateParentheses {
 
     public static void main(String[] args) {
         GenerateParentheses solution = new GenerateParentheses();
+        System.out.println(solution.generateParenthesis1(6));
         System.out.println(solution.generateParenthesis(6));
     }
 
@@ -51,13 +52,49 @@ public class GenerateParentheses {
             recursion(left, right - 1, item + ")", result);
         }
 
+    }
+
+    public ArrayList<String> generateParenthesis1(int n) {
+
+        ArrayList<String> result = new ArrayList<String>();
+        int depth = n << 1;
+        int index = 1;
+        ArrayList<Character> current = new ArrayList<Character>();
+
+        recursion1(depth, index, result, current);
+        return result;
+    }
+
+    private void recursion1(int depth, int index, ArrayList<String> result, ArrayList<Character> current) {
+
+        //judge
+        int left = 0;
+        int right = 0;
+        String item = "";
+        for (char c : current) {
+            if (c == '(') {
+                left++;
+            } else {
+                right++;
+            }
+            if (left > (depth >> 1) || right > (depth >> 1) || left < right) {
+                return;
+            }
+            item += c;
+        }
+        if (left + right == depth) {
+            result.add(item);
+            return;
+        }
+
+        current.add('(');
+        recursion1(depth, index + 1, result, current);
+        current.remove(current.size() - 1);
+        current.add(')');
+        recursion1(depth, index + 1, result, current);
+        current.remove(current.size() - 1);
 
     }
 
 
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
-    }
 }

@@ -9,8 +9,8 @@ public class ValidateBinarySearchTree {
 
     public static void main(String[] args) {
         ValidateBinarySearchTree solution = new ValidateBinarySearchTree();
-        TreeNode root = Tool.stringToTree("1,1");
-        System.out.println(solution.isValidBST(root));
+        TreeNode root = Tool.stringToTree("8 6 13 5 7 # # # #");
+        System.out.println(solution.isValidBST1(root));
     }
 
     /**
@@ -58,10 +58,26 @@ public class ValidateBinarySearchTree {
 
     }
 
+    public boolean isValidBST1(TreeNode root) {
 
-    private void swap(int[] a, int pre, int i) {
-        int temp = a[pre];
-        a[pre] = a[i];
-        a[i] = temp;
+        if (root == null) {
+            return true;
+        }
+        return isValid(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+
     }
+
+    private boolean isValid(TreeNode root, int minValue, int maxValue) {
+        if (root == null) {
+            return true;
+        }
+        if (root.val >= maxValue || root.val <= minValue) {
+            return false;
+        }
+
+        return isValid(root.left, minValue, root.val) && isValid(root.right, root.val, maxValue);
+
+
+    }
+
 }
