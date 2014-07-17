@@ -11,7 +11,13 @@ public class NQueens {
 
     public static void main(String[] args) {
         NQueens solution = new NQueens();
-        System.out.println(solution.solveNQueens(8));
+        List<String[]> result = solution.solveNQueens1(8);
+        for (String[] r : result) {
+            for (String s : r) {
+                System.out.println(s);
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -107,6 +113,84 @@ public class NQueens {
         return availableCol;
     }
 
+
+    public List<String[]> solveNQueens1(int n) {
+        ArrayList<String[]> result = new ArrayList<String[]>();
+        if (n <= 0) {
+            return result;
+        }
+        for (int i = 0; i < n; i++) {
+            int[][] visited = new int[n][n];
+            valid(visited, 0, i, 0, n, result);
+        }
+        return result;
+    }
+
+    private void valid(int[][] visited, int i, int j, int count, int n, ArrayList<String[]> result) {
+        visited[i][j] = 1;
+        count++;
+        if (count == n) {
+            //add to result
+            result.add(printMap(visited));
+            return;
+        }
+
+        setInvalidPos(visited, i, j);
+        ArrayList<int[]> nexts = findNext(visited, i + 1);
+        for (int[] pos : nexts) {
+            valid(visited, pos[0], pos[1], count, n, result);
+        }
+        visited[i][j] = 0;
+
+
+    }
+
+    private ArrayList<int[]> findNext(int[][] visited, int i) {
+
+        ArrayList<int[]> nexts = new ArrayList<int[]>();
+
+
+        for (int t = 0; t < visited.length; t++) {
+            int[] next = new int[2];
+            if (visited[i][t] == 0) {
+                next[0] = i;
+                next[1] = t;
+                nexts.add(next);
+            }
+        }
+        return nexts;
+    }
+
+
+    private void setInvalidPos(int[][] visited, int i, int j) {
+        for (int t = 0; t < visited.length; t++) {
+            if (visited[i][t] == 0) {
+                visited[i][t] = -1;
+            }
+            if (visited[t][j] == 0) {
+                visited[t][j] = -1;
+            }
+        }
+        for (int t = 0; t < visited.length; t++) {
+            for (int s = 0; s < visited.length; s++) {
+                if (visited[t][s] == 0 && (t - s == i - j || t + s == i + j)) {
+                    visited[t][s] = -1;
+                }
+            }
+        }
+    }
+
+    private String[] printMap(int[][] visited) {
+        String[] map = new String[visited.length];
+        for (int i = 0; i < visited.length; i++) {
+            String s = "";
+            for (int j = 0; j < visited[0].length; j++) {
+                s += (visited[i][j] == 1 ? 'Q' : '.');
+            }
+            map[i] = s;
+        }
+        return map;
+    }
 
 
 }
