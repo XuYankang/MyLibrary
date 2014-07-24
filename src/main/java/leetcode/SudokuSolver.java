@@ -43,6 +43,11 @@ public class SudokuSolver {
      */
     public void solveSudoku(char[][] board) {
 
+<<<<<<< HEAD
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+
+=======
         int startI = 0, startJ = 0;
         boolean end = false;
         for (int i = 0; i < 9 && !end; i++) {
@@ -85,6 +90,7 @@ public class SudokuSolver {
                     result[1] = jj;
                     return result;
                 }
+>>>>>>> facf6375952085052a8d2f218e096ff498b9c314
             }
         }
 
