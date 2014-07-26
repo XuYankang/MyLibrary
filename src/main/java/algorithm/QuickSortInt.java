@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.Arrays;
+
 /**
  * Created by Jacob on 14-7-26.
  */
@@ -7,25 +9,27 @@ public class QuickSortInt {
 
 
     public static void main(String[] args) {
-        int[] A = {1, 17, 6, 8, 4, 20, 7};
+        Integer[] A = {1, 17, 6, 8, 4, 20, 7};
         QuickSortInt q = new QuickSortInt();
         q.quicksort(A, 0, A.length);
+        System.out.println(Arrays.toString(A));
     }
 
-    public void quicksort(int[] A, int start, int end) {
-        int mid = partition(A, start, end);
-        quicksort(A, start, mid);
-        quicksort(A, mid + 1, end);
+    public <T extends Comparable<T>> void quicksort(T[] A, int start, int end) {
+        if (start < end) {
+            int mid = partition(A, start, end);
+            quicksort(A, start, mid);
+            quicksort(A, mid + 1, end);
+        }
     }
 
-    private int partition(int[] A, int start, int end) {
+    private <T extends Comparable<T>> int partition(T[] A, int start, int end) {
 
-        int x = (start + end) / 2;
-        swap(A, x, end - 1);
+        swap(A, (start + end) / 2, end - 1);
 
         int i = start - 1;
         for (int j = start; j < end - 1; j++) {
-            if (A[j] < A[x]) {
+            if (A[j].compareTo(A[end - 1]) < 0) {
                 i++;
                 swap(A, i, j);
             }
@@ -35,8 +39,11 @@ public class QuickSortInt {
         return i + 1;
     }
 
-    private void swap(int[] A, int a, int b) {
-        int temp = A[a];
+    private <T> void swap(T[] A, int a, int b) {
+        if (a == b) {
+            return;
+        }
+        T temp = A[a];
         A[a] = A[b];
         A[b] = temp;
 
