@@ -6,7 +6,7 @@ package tool;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("hello, mac");
+        System.out.println("汉字");
 
 
     }

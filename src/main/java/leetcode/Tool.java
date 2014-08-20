@@ -29,7 +29,11 @@ public class Tool {
         if (s.length() == 0) {
             return null;
         }
-        String[] ss = s.split(" ");
+        String seperator = " ";
+        if (s.indexOf(",") != -1) {
+            seperator = ",";
+        }
+        String[] ss = s.split(seperator);
         ListNode root = new ListNode(0);
         ListNode cur = root;
         for (String temp : ss) {
