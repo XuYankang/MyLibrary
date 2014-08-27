@@ -1,5 +1,7 @@
 package leetcode;
 
+import leetcode.base.Point;
+
 import java.util.HashMap;
 
 /**
