@@ -13,7 +13,7 @@ import java.util.Scanner;
  * EKLQO
  * PGRBC
  */
-public class Main {
+public class FindWordInMatrix {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
