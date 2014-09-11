@@ -3,13 +3,13 @@ package leetcode;
 /**
  * Created by jacob on 14-8-16.
  */
-public class SortList {
+public class SortLIst {
 
 
     public static void main(String[] args) {
         ListNode list = Tool.stringToLinkNode("4 2 5 13 2 99");
 
-        SortList sortList = new SortList();
+        SortLIst sortList = new SortLIst();
 
 //        ListNode first = Tool.stringToLinkNode("5 6");
 //        ListNode second = Tool.stringToLinkNode("1 2");

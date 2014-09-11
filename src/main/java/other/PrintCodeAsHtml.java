@@ -21,8 +21,13 @@ public class PrintCodeAsHtml {
             stringBuilder.append("<h1>" + file.getName() + "</h1><hr>");
             List<String> list = FileUtils.readLines(file, "UTF-8");
             for (String line : list) {
+
+                line = line.replace("&","&amp;");
                 line = line.replace(" ","&nbsp;");
                 line = line.replace("\t","&bnsp;&bnsp;&bnsp;&bnsp;");
+                line = line.replace("\"","&quot;");
+                line = line.replace("<","&lt;");
+                line = line.replace(">","&gt;");
                 stringBuilder.append(line + "<br>");
             }
             stringBuilder.append("<hr>");
