@@ -7,7 +7,7 @@ public class UniquePaths {
 
     public static void main(String[] args) {
         UniquePaths solution = new UniquePaths();
-        System.out.println(solution.uniquePaths(23, 12));
+        System.out.println(solution.uniquePaths(3, 3));
     }
 
     /**

@@ -7,7 +7,7 @@ public class ValidPalindrome {
 
     public static void main(String[] args) {
         ValidPalindrome solution = new ValidPalindrome();
-        System.out.println(solution.isPalindrome("    "));
+        System.out.println(solution.isPalindrome1("race a car"));
     }
 
     /**
@@ -52,6 +52,24 @@ public class ValidPalindrome {
         }
         return true;
 
+    }
+
+    public boolean isPalindrome1(String s) {
+        if (s == null || s.length() == 0 || s.trim().length() == 0) {
+            return true;
+        }
+        String newS = "";
+        for (char c : s.toLowerCase().toCharArray()) {
+            if (isCharNum(c)) {
+                newS += c;
+            }
+        }
+        for (int i = 0, j = newS.length() - 1; i < j; i++, j--) {
+            if (newS.charAt(i) != newS.charAt(j)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean isCharNum(char c) {

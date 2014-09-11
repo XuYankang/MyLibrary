@@ -30,7 +30,6 @@ public class TwoSum {
         while (start < end) {
             int sum = numbers2[start] + numbers2[end];
             if (sum == target) {
-
                 break;
             } else if (sum < target) {
                 start++;
