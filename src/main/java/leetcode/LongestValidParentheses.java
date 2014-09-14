@@ -9,7 +9,7 @@ public class LongestValidParentheses {
 
     public static void main(String[] args) {
         LongestValidParentheses solution = new LongestValidParentheses();
-        System.out.println(solution.longestValidParentheses("())()()(())"));
+        System.out.println(solution.longestValidParentheses("()(()"));
     }
 
     /**
