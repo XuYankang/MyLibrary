@@ -9,7 +9,7 @@ public class Permutations {
 
     public static void main(String[] args) {
         Permutations solution = new Permutations();
-        System.out.println(solution.permute(new int[]{1, 2, 3}));
+        System.out.println(solution.permute(new int[]{4, 2, 3}));
     }
 
     /**
@@ -25,8 +25,9 @@ public class Permutations {
     public ArrayList<ArrayList<Integer>> permute(int[] num) {
 
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-
+        ArrayList<Integer> path = new ArrayList<Integer>();
         permute(num, 0, num.length, result);
+        //permute(num, path, 0, result);
         return result;
 
     }
@@ -45,6 +46,25 @@ public class Permutations {
             permute(num, start + 1, end, result);
             swap(num, i, start);
         }
+    }
+
+    private void permute(int[] num, ArrayList<Integer> path, int level, ArrayList<ArrayList<Integer>> result) {
+
+
+        if (level == num.length) {
+            result.add(new ArrayList<Integer>(path));
+            return;
+        }
+
+        for (int i : num) {
+            if (path.get(path.size() - 1) != i) {
+                path.add(i);
+                permute(num, path, level + 1, result);
+                path.remove(path.size() - 1);
+            }
+        }
+
+
     }
 
 

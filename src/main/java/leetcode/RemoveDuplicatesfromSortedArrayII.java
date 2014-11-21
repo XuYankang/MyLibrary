@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -12,7 +11,7 @@ public class RemoveDuplicatesfromSortedArrayII {
     public static void main(String[] args) {
         RemoveDuplicatesfromSortedArrayII solution = new RemoveDuplicatesfromSortedArrayII();
         int[] A = {1, 1, 1, 1, 3, 3};
-        System.out.println(solution.removeDuplicates1(A));
+        System.out.println(solution.removeDuplicates(A));
         System.out.println(Arrays.toString(A));
     }
 
