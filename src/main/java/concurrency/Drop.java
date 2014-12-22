@@ -6,8 +6,7 @@ package concurrency;
 public class Drop {
 
     String message;
-    boolean empty = false;
-
+    volatile boolean empty = false;
 
 
     public synchronized void set(String message) {
